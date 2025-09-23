@@ -260,7 +260,8 @@ Saved SARIMA model and metadata.
 
 <img width="3116" height="1390" alt="image" src="https://github.com/user-attachments/assets/ea35ac65-bbe8-4862-8996-8120e4277ff9" />
 
-#Contribution
+# Contribution
+
 @anshika2698
 
 
