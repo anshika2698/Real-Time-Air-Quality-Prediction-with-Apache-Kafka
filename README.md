@@ -66,5 +66,5 @@ xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
 - You should see "air_quality"
 - Now install kafka-python
   ```bash
-  dpip install kafka-python
+  pip install kafka-python
   ```
