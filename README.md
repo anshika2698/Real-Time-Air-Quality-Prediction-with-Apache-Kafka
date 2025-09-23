@@ -8,7 +8,6 @@ This project uses Apache Kafka for real-time data streaming and environmental ti
 - [Models](#models)
 - [Results](#results)
 - [Contributing](#contributing)
-- [License](#license)
 
 # Dataset
 - The dataset contains hourly air quality measurements from a gas multisensor device deployed on the field in an Italian city from March 2004 to February 2005.
@@ -261,5 +260,7 @@ Saved SARIMA model and metadata.
 
 <img width="3116" height="1390" alt="image" src="https://github.com/user-attachments/assets/ea35ac65-bbe8-4862-8996-8120e4277ff9" />
 
+#Contribution
+@anshika2698
 
 
