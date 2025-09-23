@@ -69,4 +69,20 @@ xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
   pip install kafka-python
   ```
 ## Usage
+ - Once the repository is cloned and the Docker and Kafka setups are working
+ Following the given steps to run the model:
+
+- Run the EDA.ipynb file present in phase_2 folder, which would give you the required CSV files to run the XGBoost and Random Forest Model.
+- Run the sarima_preproccessin.ipynb file in phase_2 folder, which would the required CSV files to run the Sarima Model.
+Note:
+These are the CSV files you will get: training_data.csv, holdout_data.csv, sarima_training_data.csv and sarima_holdout_data.csv. 
+- Now go to the phase_3 folder which contains 3 .py files for random forest, xgboost and sarima model.
+- Make sure you have the needed libraries
+- Make sure the training data file paths are according to your system (xgboost and random forest have the same training_data.csv for training, and sarima uses sarima_training_data.csv.
+- Build the models, run the following commands in your terminal: 
+  ```bash
+  python random_forest_modeltrain.py
+  python xgboost_modeltrain.py
+  python sarima_model.py
+  ```    
 
