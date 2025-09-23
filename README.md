@@ -105,4 +105,31 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
 ## Kafka Consumer File
 - We use consumer.py file in phase_1 folder for the XgBoost and Random Forest Model, and we use consumer_sarima.py for Sarima model.
 - The Kafka consumer file utilizes .joblib and .json files that will be generated after we have run our models.
-- These files are called within the consumer logic as they set up the model that will be responsible for real-time predictions with the streaming data. 
+- These files are called within the consumer logic as they set up the model that will be responsible for real-time predictions with the streaming data.
+- Make sure to comment the following code snippets in the consumer.py file if running Random Forest:
+  ```bash
+     # ---------------- LOAD MODEL XG BOOST----------------
+
+     #XG Boost
+     print("Loading XGB model, feature list, and scaler...")
+     model = joblib.load("xgb_model.joblib")
+
+     scaler = joblib.load("xgb_scaler.joblib")
+
+     with open("xgb_feature_list.json", "r") as f:
+        feature_cols = json.load(f) 
+  ```
+- Make sure to comment the following code snippets in the consumer.py file if running XG Boosting:
+   ```bash
+    # ---------------- LOAD MODEL RANDOM FOREST----------------
+
+    #Random Forest
+     print("Loading RF model, feature list, and scaler...")
+     model = joblib.load("rf_model.joblib")
+     scaler = joblib.load("rf_scaler.joblib")
+
+     with open("rf_feature_list.json", "r") as f:
+         feature_cols = json.load(f)
+ 
+  ```
+  
