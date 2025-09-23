@@ -153,13 +153,113 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
 
 # Results
 
-- Model Performance with Training Set:
-- 
+- Model Performance with Training Data:
 
+```bash
+#Random Forest
+(base) Anshikas-MacBook-Air:phase_3_predictive_analytics anshikashukla$ python random_forest_modeltrain.py
+Loading and preparing data...
+Handling NaN values...
+Baseline (lag-1) MAE=0.5119, RMSE=0.7670
+Training Random Forest with TimeSeriesSplit grid search...
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+Best params: {'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}
+RF Test MAE=0.1975, RMSE=0.3507
+Saved model and metadata.
+{
+  "baseline_mae": 0.5119047619047619,
+  "baseline_rmse": 0.7669900974092231,
+  "rf_mae": 0.19753871008703588,
+  "rf_rmse": 0.35066851134184746,
+  "best_params": {
+    "max_depth": null,
+    "min_samples_split": 5,
+    "n_estimators": 200
+  }
+}
+
+#XGBoost
+(base) Anshikas-MacBook-Air:phase_3_predictive_analytics anshikashukla$ python xgboost_modeltrain.py
+Loading and preparing data...
+Handling NaN values...
+Baseline (lag-1) MAE=0.5119, RMSE=0.7670
+Training XGBoost with TimeSeriesSplit grid search...
+Fitting 3 folds for each of 24 candidates, totalling 72 fits
+Best params: {'learning_rate': 0.05, 'max_depth': 10, 'n_estimators': 200, 'subsample': 0.8}
+XGB Test MAE=0.1794, RMSE=0.3319
+Saved XGBoost model and metadata.
+{
+  "baseline_mae": 0.5119047619047619,
+  "baseline_rmse": 0.7669900974092231,
+  "xgb_mae": 0.1793936475934017,
+  "xgb_rmse": 0.3319392764195327,
+  "best_params": {
+    "learning_rate": 0.05,
+    "max_depth": 10,
+    "n_estimators": 200,
+    "subsample": 0.8
+  }
+}
+
+#SARIMA
+(base) Anshikas-MacBook-Air:phase_3_predictive_analytics anshikashukla$ python sarima_model.py
+Loading and preparing data...
+Baseline (lag-1) MAE=0.5063, RMSE=0.7597
+Training SARIMAX model...
+/opt/anaconda3/lib/python3.12/site-packages/statsmodels/base/model.py:607: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
+  warnings.warn("Maximum Likelihood optimization failed to "
+SARIMA Test MAE=0.5042, RMSE=0.6593
+Saved SARIMA model and metadata.
+{
+  "baseline_mae": 0.5062686567164179,
+  "baseline_rmse": 0.7596935753040229,
+  "sarima_mae": 0.5042401337727255,
+  "sarima_rmse": 0.6593370591425833,
+  "order": [
+    1,
+    1,
+    1
+  ],
+  "seasonal_order": [
+    1,
+    1,
+    1,
+    24
+  ],
+  "exog_cols": [
+    "PT08.S1(CO)",
+    "C6H6(GT)",
+    "NOx(GT)",
+    "PT08.S3(NOx)",
+    "NO2(GT)",
+    "PT08.S4(NO2)",
+    "PT08.S5(O3)",
+    "T",
+    "RH",
+    "AH",
+    "hour",
+    "dayofweek",
+    "month",
+    "hour_sin",
+    "hour_cos"
+  ]
+
+```
+- Model Performance with Holdout Data:
+```bash
+      #Random Forest
+      Holdout Performance: MAE=1.6428, RMSE=1.9869
+
+      #XGBoost
+      Holdout Performance: MAE=0.1512, RMSE=0.2481
+
+      #SARIMA
+      Holdout Performance: MAE: 1.0777, RMSE= 1.1542
+```
+- Note: We see the SARIMA evaluation with each prediction it makes while running the consumer file
 - You will see the following output in synchronization in your terminal split screen (producer: left screen; consumer: right screen)
 
 <img width="3116" height="1390" alt="image" src="https://github.com/user-attachments/assets/ea35ac65-bbe8-4862-8996-8120e4277ff9" />
 
-- 
 
 
