@@ -28,7 +28,7 @@ print("Loading SARIMA model and scaler...")
 sarima_model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)
 
-# Use training scaler means for NaN imputation
+# Using training scaler means for NaN imputation
 training_medians = {col: scaler.mean_[i] for i, col in enumerate(EXOG_COLS)}
 
 # ---------------- PERFORMANCE TRACKERS ----------------
