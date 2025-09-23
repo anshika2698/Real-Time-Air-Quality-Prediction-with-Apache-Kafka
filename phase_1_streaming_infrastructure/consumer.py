@@ -55,7 +55,7 @@ def prepare_message(message, feature_cols):
         if col not in df.columns:
             df[col] = np.nan  # initialize with NaN
 
-    # Reorder columns to match training order
+    # Reorder columns to match training order to avaoid errors
     df = df[feature_cols]
 
     # Apply scaler
@@ -83,21 +83,21 @@ def main():
     print(f"Consuming from topic '{TOPIC}' and making predictions...")
     for message in consumer:
         record = message.value
-        print(f"📩 Received: {record}")
+        print(f"Received: {record}")
 
         try:
             # Prepare message for model
             X = prepare_message(record, feature_cols)
             pred = model.predict(X)[0]
 
-            print(f"✅ Predicted CO = {pred:.4f}")
+            print(f"Predicted CO = {pred:.4f}")
         except Exception as e:
-            print(f"⚠️ Error processing record: {e}")
+            print(f"Error processing record: {e}")
     
     try:
         X = prepare_message(record, feature_cols)
         pred = model.predict(X)[0]
-        print(f"✅ Predicted CO = {pred:.4f}")
+        print(f"Predicted CO = {pred:.4f}")
 
     # If actual CO(GT) is in message, update performance
         if "CO(GT)" in record:
@@ -107,7 +107,7 @@ def main():
             update_performance(actuals, predictions)
 
     except Exception as e:
-        print(f"⚠️ Error processing record: {e}")
+        print(f"Error processing record: {e}")
 
 if __name__ == "__main__":
     main()
