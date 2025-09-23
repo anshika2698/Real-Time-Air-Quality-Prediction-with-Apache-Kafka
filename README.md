@@ -17,9 +17,23 @@ This project uses Apache Kafka for real-time data streaming and environmental ti
 
 ## Installation
 
+Docker Installation
+
+-Visit [Docker Desktop](https://www.docker.com/products/docker-desktop/) and download the version for your OS (Windows/macOS/Linux).
+- Follow the installation instructions on the website.
+  
+Verify Installation
+ ```bash 
+ docker --version
+ docker-compose --version
+  ```
+- Start Docker by launching Docker Desktop
+
 Clone the repository:
    ```bash
    git clone [https://github.com/yourusername/repo.git](https://github.com/anshika2698/Real-Time-Air-Quality-Prediction-with-Apache-Kafka.git)
    cd repo
+   ```
+
 
 
