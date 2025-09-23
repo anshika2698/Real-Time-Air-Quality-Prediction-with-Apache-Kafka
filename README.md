@@ -145,3 +145,13 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
     ```bash
      python consumer.py
     ```
+# Results
+
+You will see the following output in synchronization in your terminal split screen
+
+<img width="3116" height="1390" alt="image" src="https://github.com/user-attachments/assets/ea35ac65-bbe8-4862-8996-8120e4277ff9" />
+
+
+
+
+
