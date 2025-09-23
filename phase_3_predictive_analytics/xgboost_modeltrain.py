@@ -1,4 +1,3 @@
-
 """
 Offline training + validation for XGBoost forecasting (CO)
 Saves: xgb_model.joblib, scaler.joblib, feature_list.json, metrics.json
@@ -17,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 CSV_PATH = "training_data.csv"   # cleaned CSV with 'datetime' column
 DATETIME_COL = "datetime"
 TARGET = "CO(GT)"
-TEST_HOURS = 24 * 14    # last 14 days as test (adjustable)
+TEST_HOURS = 24 * 14    # last 14 days as test
 MODEL_OUT = "xgb_model.joblib"
 SCALER_OUT = "xgb_scaler.joblib"
 FEATURES_OUT = "xgb_feature_list.json"
@@ -61,15 +60,14 @@ def main():
     print("Loading and preparing data...")
     df = load_and_prepare(CSV_PATH)
 
-    # -------------------------------
     # Handle NaNs
     # -------------------------------
     print("Handling NaN values...")
 
-    # 1. Drop rows where target itself is missing
+    #Dropping rows where target itself is missing
     df = df.dropna(subset=[TARGET]).reset_index(drop=True)
 
-    # 2. Impute sensor/environmental features with median
+    #Imputing sensor/environmental features with median
     sensor_cols = ['PT08.S1(CO)', 'C6H6(GT)',
                    'NOx(GT)', 'PT08.S3(NOx)',
                    'NO2(GT)', 'PT08.S4(NO2)', 'PT08.S5(O3)',
@@ -78,7 +76,7 @@ def main():
         median_val = df[col].median()
         df[col] = df[col].fillna(median_val)
 
-    # 3. Impute lag/rolling features with ffill/bfill
+    #Imputing lag/rolling features with ffill/bfill
     lag_roll_cols = ['CO(GT)_lag_1','CO(GT)_lag_3','CO(GT)_lag_6',
                      'CO(GT)_lag_12','CO(GT)_lag_24',
                      'CO_roll_std','CO_roll_max',
@@ -89,7 +87,6 @@ def main():
         print("⚠️ Warning: NaNs remain in dataset")
         print(df.isna().sum()[df.isna().sum() > 0])
 
-    # -------------------------------
     # Split train/test
     # -------------------------------
     train, test = temporal_split(df)
@@ -101,7 +98,6 @@ def main():
     X_test = test[feature_cols]
     y_test = test[TARGET]
 
-    # -------------------------------
     # Baseline (naive lag-1) with NaN-safe eval
     # -------------------------------
     y_base = test['CO(GT)_lag_1']
@@ -114,16 +110,14 @@ def main():
         print(f"Baseline (lag-1) MAE={base_mae:.4f}, RMSE={base_rmse:.4f}")
     else:
         base_mae, base_rmse = None, None
-        print("⚠️ Baseline could not be computed due to NaNs in lag feature.")
+        print("Baseline could not be computed due to NaNs in lag feature.")
 
-    # -------------------------------
     # Scale features (optional)
     # -------------------------------
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
-    # -------------------------------
     # XGBoost training with TimeSeriesSplit CV
     # -------------------------------
     print("Training XGBoost with TimeSeriesSplit grid search...")
@@ -148,14 +142,12 @@ def main():
     best = grid.best_estimator_
     print("Best params:", grid.best_params_)
 
-    # -------------------------------
     # Evaluate model
     # -------------------------------
     y_pred = best.predict(X_test_scaled)
     mae, rmse = evaluate(y_test, y_pred)
     print(f"XGB Test MAE={mae:.4f}, RMSE={rmse:.4f}")
 
-    # -------------------------------
     # Save model, scaler, features, metrics
     # -------------------------------
     joblib.dump(best, MODEL_OUT)
