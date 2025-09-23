@@ -91,4 +91,14 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
 ## Kafka Producer File
 
 - The producer.py file in phase_1 folder uses the holdout data. We have 2 sets of holdout datasets i) holdout_data.csv (for xgboost and random forest), ii) sarima_holdout_data.csv (for Sarina model)
-- Make sure the file paths for the CSV files are correct and 
+- Make sure the file paths for the CSV files are correct in your producer.py code.
+- Since we are using the same producer file for all three models, make sure you comment the following code snippet if you are running Sarima Model:
+```bash
+    Load holdout dataset for Random Forest and XG Boost
+    df = pd.read_csv("holdout_data.csv")    
+  ```
+-  If you are running XgBoost or Random Forest Model, make sure to comment the following code snippet:
+  ```bash
+     Load holdout dataset for Sarima
+     df = pd.read_csv("sarima_holdout_data.csv")  
+  ```
