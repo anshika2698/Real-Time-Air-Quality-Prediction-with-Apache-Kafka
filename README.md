@@ -12,6 +12,14 @@ We chose CO (carbon monoxide) levels as the prediction target. Here are a few re
 
 - Keeps deployment lightweight: Predicting one pollutant keeps the model size smaller, avoids multi-output complexity, and makes the streaming consumer easier to implement and debug.
 
+- CO(GT) data is well spread out for our analysis and is seen to skew to the right
+
+<img width="1009" height="452" alt="image" src="https://github.com/user-attachments/assets/33577feb-0f51-4729-8740-3daa2e0dad4a" />
+
+- Lagged Correlation for CO
+
+<img width="1007" height="473" alt="image" src="https://github.com/user-attachments/assets/ba27c033-adbb-46d2-92c2-a727fba3527d" />
+
 # Table of Contents
 - [Dataset](#dataset)
 - [Installation](#installation)
