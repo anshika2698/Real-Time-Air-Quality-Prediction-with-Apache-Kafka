@@ -45,9 +45,10 @@ Note: the docker-compose.yml file in phase_1_streaming_infrastructure doc will h
   docker ps
   ```
 You will see something like:
+```bash
 CONTAINER ID   IMAGE                            PORTS
 xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
-
+```
 - Once the container is running, create the topic
    ```bash
   docker exec -it <kafka_container_name> \
