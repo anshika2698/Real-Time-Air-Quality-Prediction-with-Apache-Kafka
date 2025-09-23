@@ -16,7 +16,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 CSV_PATH = "sarima_training_data.csv"
 DATETIME_COL = "datetime"
 TARGET = "CO(GT)"
-TEST_HOURS = 24 * 14      # last 14 days as test (adjustable)
+TEST_HOURS = 24 * 14      # last 14 days as test
 MODEL_OUT = "sarima_model.joblib"
 SCALER_OUT = "sarima_scaler.joblib"
 FEATURES_OUT = "sarima_feature_list.json"
@@ -54,9 +54,9 @@ def main():
     print("Loading and preparing data...")
     df = load_and_prepare(CSV_PATH)
 
-    # Handle NaNs in target - required for SARIMA
+    # Handling NaNs in target for SARIMA
     df = df.dropna(subset=[TARGET]).reset_index(drop=True)
-    # Handle NaNs in exogenous features by median
+    # Handling NaNs in exogenous features by median
     for c in EXOG_COLS:
         df[c] = df[c].fillna(df[c].median())
 
@@ -116,7 +116,7 @@ def main():
     }
     with open(METRICS_OUT, "w") as f:
         json.dump(metrics, f, indent=2)
-    print("✅ Saved SARIMA model and metadata.")
+    print("Saved SARIMA model and metadata.")
     print(json.dumps(metrics, indent=2))
 
 if __name__ == "__main__":
