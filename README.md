@@ -102,3 +102,7 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
      Load holdout dataset for Sarima
      df = pd.read_csv("sarima_holdout_data.csv")  
   ```
+## Kafka Consumer File
+- We use consumer.py file in phase_1 folder for the XgBoost and Random Forest Model, and we use consumer_sarima.py for Sarima model.
+- The Kafka consumer file utilizes .joblib and .json files that will be generated after we have run our models.
+- These files are called within the consumer logic as they set up the model that will be responsible for real-time predictions with the streaming data. 
