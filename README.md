@@ -22,7 +22,8 @@ We chose CO (carbon monoxide) levels as the prediction target. Here are a few re
 
 # Pipeline Architecture
 
-  ![Untitled](https://github.com/user-attachments/assets/7aaed783-a00c-4105-a04d-519887ab8fc9)
+![Untitled (1)](https://github.com/user-attachments/assets/34bd948f-ec68-42fb-94bc-928d34bad242)
+
 
 # Table of Contents
 - [Dataset](#dataset)
