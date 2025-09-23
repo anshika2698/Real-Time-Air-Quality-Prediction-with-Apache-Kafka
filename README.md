@@ -71,11 +71,12 @@ xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
 ## Usage
  - Once the repository is cloned and the Docker and Kafka setups are working
  Following the given steps to run the model:
-
+# EDA
 - Run the EDA.ipynb file present in phase_2 folder, which would give you the required CSV files to run the XGBoost and Random Forest Model.
 - Run the sarima_preproccessin.ipynb file in phase_2 folder, which would the required CSV files to run the Sarima Model.
 Note:
-These are the CSV files you will get: training_data.csv, holdout_data.csv, sarima_training_data.csv and sarima_holdout_data.csv. 
+These are the CSV files you will get: training_data.csv, holdout_data.csv, sarima_training_data.csv and sarima_holdout_data.csv.
+#Model Building
 - Now go to the phase_3 folder which contains 3 .py files for random forest, xgboost and sarima model.
 - Make sure you have the needed libraries
 - Make sure the training data file paths are according to your system (xgboost and random forest have the same training_data.csv for training, and sarima uses sarima_training_data.csv.
@@ -86,3 +87,8 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
   python sarima_model.py
   ```    
 - The 3 models should be successfully built
+  
+# Producer File
+
+- The producer.py file in phase_1 folder uses the holdout data. We have 2 sets of holdout datasets i) holdout_data.csv (for xgboost and random forest), ii) sarima_holdout_data.csv (for Sarina model)
+- Make sure the file paths for the CSV files are correct and 
