@@ -19,6 +19,9 @@ We chose CO (carbon monoxide) levels as the prediction target. Here are a few re
 - Lagged Correlation for CO in 1, 3, 6, 12, 24 hours
 
 <img width="1007" height="473" alt="image" src="https://github.com/user-attachments/assets/ba27c033-adbb-46d2-92c2-a727fba3527d" />
+# Pipeline Architechture
+
+![Untitled](https://github.com/user-attachments/assets/7aaed783-a00c-4105-a04d-519887ab8fc9)
 
 # Table of Contents
 - [Dataset](#dataset)
