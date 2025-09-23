@@ -145,13 +145,21 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
     ```bash
      python consumer.py
     ```
+- Run the Prediction_performance_eval.py to evaluate the prediction performance of models on the holdout data:
+  ```bash
+     python Prediction_performance_eval.py
+    ```
+- Note: using MAE (Mean Absolute Error) and RMSE (Root Mean Squared Error) as the metrics to measuring our model performance
+
 # Results
 
-You will see the following output in synchronization in your terminal split screen (producer: left screen; consumer: right screen)
+- Model Performance with Training Set:
+- 
+
+- You will see the following output in synchronization in your terminal split screen (producer: left screen; consumer: right screen)
 
 <img width="3116" height="1390" alt="image" src="https://github.com/user-attachments/assets/ea35ac65-bbe8-4862-8996-8120e4277ff9" />
 
-
-
+- 
 
 
