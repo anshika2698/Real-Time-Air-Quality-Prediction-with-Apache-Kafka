@@ -1,7 +1,7 @@
 # Real-Time-Air-Quality-Prediction-with-Apache-Kafka
 This project uses Apache Kafka for real-time data streaming and environmental time series analysis. Develop an end-to-end data pipeline using the UCI Air Quality dataset to demonstrate merit in streaming architecture, exploratory data analysis, and predictive modeling deployment. 
 
-## Table of Contents
+# Table of Contents
 - [Dataset](#dataset)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -10,12 +10,12 @@ This project uses Apache Kafka for real-time data streaming and environmental ti
 - [Contributing](#contributing)
 - [License](#license)
 
-## Dataset
+# Dataset
 - The dataset contains hourly air quality measurements from a gas multisensor device deployed on the field in an Italian city from March 2004 to February 2005.
 - Features include: Date	(DD/MM/YYYY), Time	(HH.MM.SS), True hourly averaged concentration CO in mg/m^3  (reference analyzer), PT08.S1 (tin oxide)  hourly averaged sensor response (nominally  CO targeted), True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer), True hourly averaged Benzene concentration  in microg/m^3 (reference analyzer), PT08.S2 (titania) hourly averaged sensor response (nominally NMHC targeted), True hourly averaged NOx concentration  in ppb (reference analyzer), PT08.S3 (tungsten oxide) hourly averaged sensor response (nominally NOx targeted), True hourly averaged NO2 concentration in microg/m^3 (reference analyzer), PT08.S4 (tungsten oxide) hourly averaged sensor response (nominally NO2 targeted), PT08.S5 (indium oxide) hourly averaged sensor response (nominally O3 targeted), Temperature in Â°C, Relative Humidity (%), AH Absolute Humidity
 - Source: [UCI Machine Learning Repository - Air Quality Dataset](https://archive.ics.uci.edu/ml/datasets/Air+Quality)
 
-## Installation
+# Installation
 
 Docker Installation
 
@@ -68,15 +68,15 @@ xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
   ```bash
   pip install kafka-python
   ```
-## Usage
+# Usage
  - Once the repository is cloned and the Docker and Kafka setups are working
  Following the given steps to run the model:
-# EDA
+## EDA
 - Run the EDA.ipynb file present in phase_2 folder, which would give you the required CSV files to run the XGBoost and Random Forest Model.
 - Run the sarima_preproccessin.ipynb file in phase_2 folder, which would the required CSV files to run the Sarima Model.
 Note:
 These are the CSV files you will get: training_data.csv, holdout_data.csv, sarima_training_data.csv and sarima_holdout_data.csv.
-#Model Building
+## Model Building
 - Now go to the phase_3 folder which contains 3 .py files for random forest, xgboost and sarima model.
 - Make sure you have the needed libraries
 - Make sure the training data file paths are according to your system (xgboost and random forest have the same training_data.csv for training, and sarima uses sarima_training_data.csv.
@@ -88,7 +88,7 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
   ```    
 - The 3 models should be successfully built
   
-# Producer File
+## Kafka Producer File
 
 - The producer.py file in phase_1 folder uses the holdout data. We have 2 sets of holdout datasets i) holdout_data.csv (for xgboost and random forest), ii) sarima_holdout_data.csv (for Sarina model)
 - Make sure the file paths for the CSV files are correct and 
