@@ -85,4 +85,4 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
   python xgboost_modeltrain.py
   python sarima_model.py
   ```    
-
+- The 3 models should be successfully built
