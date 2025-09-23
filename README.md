@@ -1,6 +1,17 @@
 # Real-Time-Air-Quality-Prediction-with-Apache-Kafka
 This project uses Apache Kafka for real-time data streaming and environmental time series analysis. Develop an end-to-end data pipeline using the UCI Air Quality dataset to demonstrate merit in streaming architecture, exploratory data analysis, and predictive modeling deployment. 
 
+# Scope of Project
+We chose CO (carbon monoxide) levels as the prediction target for a few reasons:
+
+- Proof of concept simplicity: Predicting all pollutants at once (multi-output regression) is totally possible, but it complicates training, evaluation, and deployment. Starting with a single pollutant (CO) makes the workflow easier to validate: clean data → feature engineering → train → test → deploy → stream predictions.
+
+- CO is a meaningful indicator: CO is a key air quality pollutant, linked to vehicle emissions and industrial activity. Short-term spikes in CO are important for real-time monitoring and decision-making.
+
+- Time series forecasting fit: CO levels naturally fluctuate by hour/day and respond well to lag-based features (like CO at t-1, t-6, etc.), making it a solid test case for Random Forest regression.
+
+- Keeps deployment lightweight: Predicting one pollutant keeps the model size smaller, avoids multi-output complexity, and makes the streaming consumer easier to implement and debug.
+
 # Table of Contents
 - [Dataset](#dataset)
 - [Installation](#installation)
