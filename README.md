@@ -132,4 +132,16 @@ These are the CSV files you will get: training_data.csv, holdout_data.csv, sarim
          feature_cols = json.load(f)
  
   ```
-  
+
+  ## Running The Project
+
+  - Once everything above is ready, we can run our producer and consumer files to make real-time predictions for CO
+  - Split the terminal to see the message being sent by the producer and received by the consumer, and the real-time predictions being performed by the model of your choosing
+  - Run the following command in Terminal 1:
+    ```bash
+     python producer.py  
+    ```
+  - Run the following command in Terminal 2: 
+    ```bash
+     python consumer.py
+    ```
