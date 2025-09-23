@@ -1,4 +1,3 @@
-# train_rf.py
 """
 Offline training + validation for Random Forest forecasting (CO)
 Saves: rf_model.joblib, scaler.joblib, feature_list.json, metrics.json
@@ -19,7 +18,7 @@ from datetime import timedelta
 CSV_PATH = "training_data.csv"   # cleaned CSV with 'datetime' column
 DATETIME_COL = "datetime"
 TARGET = "CO(GT)"
-TEST_HOURS = 24 * 14    # last 14 days as test (adjustable)
+TEST_HOURS = 24 * 14    # last 14 days as test
 LAGS = [1, 3, 6, 12, 24]
 ROLL_WINDOWS = [3, 24]
 MODEL_OUT = "rf_model.joblib"
@@ -65,15 +64,14 @@ def main():
     print("Loading and preparing data...")
     df = load_and_prepare(CSV_PATH)
 
-    # -------------------------------
     # Handle NaNs
     # -------------------------------
     print("Handling NaN values...")
 
-    # 1. Drop rows where target itself is missing (cannot train without target)
+    #Dropping rows where target itself is missing (cannot train without target)
     df = df.dropna(subset=[TARGET]).reset_index(drop=True)
 
-    # 2. Impute sensor/environmental features with median
+    #Imputing sensor/environmental features with median
     sensor_cols = ['PT08.S1(CO)', 'C6H6(GT)',
                     'NOx(GT)', 'PT08.S3(NOx)',
                    'NO2(GT)', 'PT08.S4(NO2)', 'PT08.S5(O3)',
@@ -82,17 +80,16 @@ def main():
         median_val = df[col].median()
         df[col] = df[col].fillna(median_val)
 
-    # 3. Impute lag/rolling features with forward-fill then backward-fill
+    #Imputing lag/rolling features with forward-fill then backward-fill
     lag_roll_cols = ['CO(GT)_lag_1','CO(GT)_lag_3','CO(GT)_lag_6','CO(GT)_lag_12',
                      'CO(GT)_lag_24','CO_roll_std','CO_roll_max','CO(GT)_rollmean_3','CO(GT)_rollmean_24']
     df[lag_roll_cols] = df[lag_roll_cols].ffill().bfill()
 
-    # Optional: check if any NaNs remain
+    #Checking if any NaNs remain
     if df.isna().sum().sum() > 0:
         print("Warning: There are still NaNs remaining in the dataset")
         print(df.isna().sum()[df.isna().sum() > 0])
 
-    # -------------------------------
     # Split train/test
     # -------------------------------
     train, test = temporal_split(df)
@@ -104,21 +101,18 @@ def main():
     X_test = test[feature_cols]
     y_test = test[TARGET]
 
-    # -------------------------------
     # Baseline (naive lag-1)
     # -------------------------------
     y_base = test['CO(GT)_lag_1']
     base_mae, base_rmse = evaluate(y_test, y_base)
     print(f"Baseline (lag-1) MAE={base_mae:.4f}, RMSE={base_rmse:.4f}")
 
-    # -------------------------------
     # Scale features (optional for RF)
     # -------------------------------
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
-    # -------------------------------
     # Random Forest training with TimeSeriesSplit CV
     # -------------------------------
     print("Training Random Forest with TimeSeriesSplit grid search...")
@@ -130,7 +124,6 @@ def main():
     best = grid.best_estimator_
     print("Best params:", grid.best_params_)
 
-    # -------------------------------
     # Evaluate model
     # -------------------------------
     y_pred = best.predict(X_test)
