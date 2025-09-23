@@ -19,7 +19,7 @@ This project uses Apache Kafka for real-time data streaming and environmental ti
 
 Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/repo.git
+   git clone [https://github.com/yourusername/repo.git](https://github.com/anshika2698/Real-Time-Air-Quality-Prediction-with-Apache-Kafka.git)
    cd repo
 
 
