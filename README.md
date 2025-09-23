@@ -34,6 +34,36 @@ Clone the repository:
    git clone [https://github.com/yourusername/repo.git](https://github.com/anshika2698/Real-Time-Air-Quality-Prediction-with-Apache-Kafka.git)
    cd repo
    ```
+Note: the docker-compose.yml file in phase_1_streaming_infrastructure doc will help you setup kafka in 
 
+- Run Docker Compose to Start Kafka
+  ```bash
+  docker-compose up -d
+  ```
+- Check running containers
+   ```bash
+  docker ps
+  ```
+You will see something like:
+CONTAINER ID   IMAGE                            PORTS
+xxxxxx         confluentinc/cp-kafka:latest     0.0.0.0:9092->9092/tcp
 
-
+- Once the container is running, create the topic
+   ```bash
+  docker exec -it <kafka_container_name> \
+  kafka-topics --create \
+  --topic air_quality \
+  --bootstrap-server localhost:9092 \
+  --partitions 1 \
+  --replication-factor 1
+  ```
+- List Topics to Confirm
+  ```bash
+  docker exec -it <kafka_container_name> \
+  kafka-topics --list --bootstrap-server localhost:9092
+  ```
+- You should see "air_quality"
+- Now install kafka-python
+  ```bash
+  dpip install kafka-python
+  ```
