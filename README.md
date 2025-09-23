@@ -2,7 +2,7 @@
 This project uses Apache Kafka for real-time data streaming and environmental time series analysis. Develop an end-to-end data pipeline using the UCI Air Quality dataset to demonstrate merit in streaming architecture, exploratory data analysis, and predictive modeling deployment. 
 
 # Scope of Project
-We chose CO (carbon monoxide) levels as the prediction target for a few reasons:
+We chose CO (carbon monoxide) levels as the prediction target. Here are a few reasons for that:
 
 - Proof of concept simplicity: Predicting all pollutants at once (multi-output regression) is totally possible, but it complicates training, evaluation, and deployment. Starting with a single pollutant (CO) makes the workflow easier to validate: clean data → feature engineering → train → test → deploy → stream predictions.
 
