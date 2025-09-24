@@ -32,7 +32,6 @@ We chose CO (carbon monoxide) levels as the prediction target. Here are a few re
 - [Usage](#usage)
 - [Models](#models)
 - [Results](#results)
-- [Contributing](#contributing)
 
 # Dataset
 - The dataset contains hourly air quality measurements from a gas multisensor device deployed on the field in an Italian city from March 2004 to February 2005.
