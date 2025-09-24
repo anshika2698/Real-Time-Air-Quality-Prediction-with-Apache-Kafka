@@ -4,6 +4,7 @@ This project uses Apache Kafka for real-time data streaming and environmental ti
 # Scope of Project
 We chose CO (carbon monoxide) levels as the prediction target. Here are a few reasons for that:
 
+- Keeping public health foremost, Carbon Monoxide (CO) is the most acutely fatal and leads to the highest number of poisoning deaths. It can kill a person in minutes at high concentrations. 
 - Proof of concept simplicity: Predicting all pollutants at once (multi-output regression) is totally possible, but it complicates training, evaluation, and deployment. Starting with a single pollutant (CO) makes the workflow easier to validate: clean data → feature engineering → train → test → deploy → stream predictions.
 
 - CO is a meaningful indicator: CO is a key air quality pollutant, linked to vehicle emissions and industrial activity. Short-term spikes in CO are important for real-time monitoring and decision-making.
