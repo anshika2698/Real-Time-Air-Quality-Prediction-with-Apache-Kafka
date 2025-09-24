@@ -68,13 +68,7 @@ Maximum Likelihood optimization failed to converge are common.
 
 Mitigate by adjusting the SARIMA model order, scaling exogenous variables, or increasing optimization iterations.
 
-## 8. Evaluation Metrics Consistency
-
-Ensure MAE and RMSE calculations in Prediction_performance_eval.py respect any scaling applied during training.
-
-Collect all predictions before calculating aggregate metrics to avoid partial results.
-
-## 9. Docker-Compose Specific Issues
+## 8. Docker-Compose Specific Issues
 
 Restart services if containers hang:
 
@@ -85,7 +79,7 @@ Clean dangling images and volumes if Kafka fails to start:
 
 docker system prune -f
 
-## 10. Logging and Debugging
+## 9. Logging and Debugging
 
 Add debug prints in consumer.py to confirm the features being read and passed to the model.
 
