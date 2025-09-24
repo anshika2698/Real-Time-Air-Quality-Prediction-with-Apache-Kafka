@@ -22,12 +22,6 @@
 
 >> Business justification: Air quality depends heavily on recent past values (autocorrelation). For example, a sudden spike in CO is usually followed by elevated levels for several hours. Capturing these temporal dependencies makes forecasts more reliable, which is vital for early warnings.
 
-## Scaling of Features (Standardization)
-
->> Standardized features before model training.
-
->> Business justification: Different sensors (CO in mg/m³, NOx in ppb, benzene in µg/m³) operate on very different scales. Scaling ensures that no pollutant dominates the learning process simply because of unit differences, leading to fairer and more accurate predictions.
-
 ## Holdout Dataset Strategy
 
 >> Reserved the last 20% of chronological data as a holdout set for Kafka simulation (not used in training).
